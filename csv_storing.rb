@@ -1,5 +1,5 @@
 require 'csv'
-@@resp = []
+@content = []
 
 def file_storing(file_path, hash_ary, field_names)
   csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
@@ -28,8 +28,8 @@ end
 
 def deep_hash(hash)
   hash.each do |k1,v1|
-    v1.is_a?(Hash) ? deep_hash(v1) : @@resp << v1
+    v1.is_a?(Hash) ? deep_hash(v1) : @content << v1
   end
-  @@resp
+  @content
 end
 
