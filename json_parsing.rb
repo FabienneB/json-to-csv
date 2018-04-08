@@ -12,7 +12,8 @@ def field_names_creation(hash_ary)
   hash_ary.first.each do |k, v|
     if v.is_a? Hash
       @string_key_beg << k
-      key_concatenate(v)
+      key_store(v)
+      # Concatenate keys stored in arrays
       beg_keys = @string_key_beg.map { |sk| "#{@string_key_beg.first}.#{sk}" }
       beg_keys[1..beg_keys.size].each do |bk|
         @string_key_end.uniq.each { |ek| field_names << "#{bk}.#{ek}" }
@@ -24,11 +25,12 @@ def field_names_creation(hash_ary)
   field_names
 end
 
-def key_concatenate(hash)
+def key_store(hash)
+  # fill 2 arrays : one for first part of field names, and one for the last part
   hash.each do |k1,v1|
     if v1.is_a?(Hash)
       @string_key_beg << k1
-      key_concatenate(v1)
+      key_store(v1)
     else
       @string_key_end << k1
     end
