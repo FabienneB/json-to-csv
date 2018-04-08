@@ -3,7 +3,7 @@ require 'csv'
 
 def file_storing(file_path, hash_ary, field_names)
   csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
-  CSV.open(file_path, 'wb', csv_options) do |csv|
+  CSV.open(file_path, 'w+', csv_options) do |csv|
     csv << field_names if field_names.size > 0
     hash_ary.each do |hsh|
       csv_content = ary_content(hsh, field_names)
