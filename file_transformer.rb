@@ -6,5 +6,3 @@ def json_to_csv_transform(file_path_json, file_path_csv)
   field_names = field_names_creation(users)
   file_storing(file_path_csv, users, field_names)
 end
-
-json_to_csv_transform('users.json', 'users.csv')
